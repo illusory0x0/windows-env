@@ -1,4 +1,7 @@
-Write-Output "msys2 ucrt64 environment"
+$__ = Get-Date
+
+Write-Output "msys2 ucrt64 environment on $__"
+
 
 # set environment variable path to empty
 $env:Path = ''
@@ -17,14 +20,29 @@ New-Alias -Name 'msvc_python' -Value 'C:\app\Python313\python.exe'
 New-Alias -Name 'pyocd' -Value "$msvc_python_scripts\pyocd.exe" 
 
 
+# https://mirrors.ustc.edu.cn/help/ghcup.html
+# https://mirrors.ustc.edu.cn/help/hackage.html
+# use this tutorial to switch mirrors source
+# don't forget update
+# cabal update
+# stack update
+$stack_config = "$($env:APPDATA)/stack/config.yaml"
+$cabal_config = "$($env:GHCUP_INSTALL_BASE_PREFIX)/cabal/config"
+$ghcup_config = "$($env:GHCUP_INSTALL_BASE_PREFIX)/ghcup/config.yaml"
+
 # msys bin
 $usr_bin = 'C:\app\msys64\usr\bin'
 
 # ucrt64 bin 
 $ucrt64_bin = 'C:/app/msys64/ucrt64/bin/'
 
+$cabal_bin = "$($env:GHCUP_INSTALL_BASE_PREFIX)/cabal/bin"
+$ghcup_bin = "$($env:GHCUP_INSTALL_BASE_PREFIX)/ghcup/bin"
+
+$vscode_bin = "$($env:LOCALAPPDATA)/Programs\Microsoft VS Code\bin"
+
 # all path you want to append to $env:Path
-$paths = $ucrt64_bin, $usr_bin
+$paths = $ucrt64_bin, $usr_bin, $ghcup_bin, $cabal_bin, $vscode_bin
 
 foreach ($e in $paths) {
     $env:Path += "$e;"
