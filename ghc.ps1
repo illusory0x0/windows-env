@@ -20,7 +20,7 @@ $stack_config = "$($env:APPDATA)/stack/config.yaml"
 $cabal_config = "$cabal_path/cabal/config"
 $ghcup_config = "$ghcup_path/config.yaml"
 
-$cabal_bin = "$cabal_path/cabal/bin"
+$cabal_bin = "$cabal_path/bin"
 $ghcup_bin = "$ghcup_path/bin"
 
 Config-MSYS2 "$ghcup_path/msys64"

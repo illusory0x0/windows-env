@@ -11,6 +11,19 @@ function Config-Env {
     }
 }
 
+function Append-Env {
+    param (
+        [string[]] $Paths 
+    )
+    process {
+        # append environment variable path to empty
+        foreach ($e in $Paths) {
+            $env:Path += "$e;"
+        }
+    }
+}
+
+
 function Config-MSYS2 {
     [CmdletBinding()]
     param (

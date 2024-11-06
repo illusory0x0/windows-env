@@ -22,7 +22,10 @@ Config-MSYS2 "$($env:msys2)"
 
 $vscode_bin = "$($env:LOCALAPPDATA)/Programs\Microsoft VS Code\bin"
 
-Config-Env $ucrt64_bin, $usr_bin, $vscode_bin
+$usblib_path = "C:\app\libusb-1.0.27"
+$usblib_lib = "$usblib_path\VS2022\MS64\dll"
+
+Config-Env $ucrt64_bin, $usr_bin, $vscode_bin, $usblib_lib
 
 
 # I not recommend use `Cmake Tools` VSC extension to run cmake command
